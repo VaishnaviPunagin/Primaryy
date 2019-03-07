@@ -10,11 +10,9 @@ void in(int *x, int *y, int *z)
 
 int com(int a,int b, int c)
 {
-      int m;
-      if(a<b && a<c) m=a;
-      else if(b<c) m=b;
-      else m=c;
-      return m;
+      if(a<b && a<c) return a;
+      else if(b<c) return b;
+      else return c;
 }
 
 void op(int z)
