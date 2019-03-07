@@ -3,7 +3,7 @@
 struct fraction
 {
     int num,den;
-}fraction;
+};
 
 void in(int *num,int *den)
 {
