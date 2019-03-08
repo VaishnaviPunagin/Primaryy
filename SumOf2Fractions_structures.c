@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 
 struct fraction
@@ -11,7 +12,7 @@ struct fraction input()
     printf("Enter value of numerator: ");
     scanf("%d",&f.num);
     printf("Enter value of denominator: ");
-    scanf("%d ",&f.den);
+    scanf("%d",&f.den);
     return f;
 }
 
