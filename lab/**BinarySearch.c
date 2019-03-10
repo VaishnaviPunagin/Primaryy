@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void input(int *n)
+void inputn(int *n)
 {
 	printf("How many elements do you want to enter?\n");
 	scanf("%d",n);
@@ -44,12 +44,12 @@ void bsearch(int search,int *pos,int *flag,int n,int a[])
 	}
 }
 
-void output(int pos,int flag,int a[])
+void output(int pos,int search,int flag,int a[])
 {
 	if(flag==1)
-		printf("\n%d found at %d position in the array!.\n",a[pos],pos);
+		printf("Element %d found at %d position in the array!.\n",search,pos);
 	else 
-	printf("Element not found in array. %d does not exist in entered list.",a[pos]);
+	printf("Element not found in array. %d does not exist in entered list.",search);
 }
 
 int main()
@@ -59,7 +59,7 @@ int main()
 	int a[n];
 	inputarr(n,a);
 	inputkey(&search);
-	bsearch(search,*pos,*flag,n,a);
-	output(pos,flag,a);
+	bsearch(search,&pos,&flag,n,a);
+	output(pos,search,flag,a);
 	return 0;
 }
