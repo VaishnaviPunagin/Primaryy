@@ -44,12 +44,12 @@ void bsearch(int search,int *pos,int *flag,int n,int a[])
 	}
 }
 
-void output(int pos,int search,int flag,int a[])
+void output(int pos,int flag,int a[])
 {
 	if(flag==1)
-		printf("Element %d found at %d position in the array!.\n",search,pos);
+		printf("Element %d found at %d position in the array!.\n",a[pos-1],pos);
 	else 
-	printf("Element not found in array. %d does not exist in entered list.",search);
+	printf("Element not found in array. %d does not exist in entered list.",a[pos-1]);
 }
 
 int main()
@@ -60,6 +60,6 @@ int main()
 	inputarr(n,a);
 	inputkey(&search);
 	bsearch(search,&pos,&flag,n,a);
-	output(pos,search,flag,a);
+	output(pos,flag,a);
 	return 0;
 }
