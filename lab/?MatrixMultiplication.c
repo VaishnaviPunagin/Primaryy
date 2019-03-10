@@ -11,8 +11,8 @@ void inputmatrix(int m,int n,int matrix[m][n])
 	for(int i=0;i<m;i++)
 		for(int j=0;j<n;j++)
 		{
-			printf("\nEnter value into matrix for position [%d][%d]",i,j);
-			scanf("%d",matrix[i][j]);
+			printf("Enter value into matrix for position [%d][%d]",i,j);
+			scanf("%d",&matrix[i][j]);
 		}
 }
 
@@ -33,7 +33,7 @@ void output(int m,int n,int p,int q,int m3[m][q])
 {
 	if(n==q)
 	{	
-		printf("Mulplied\n");	
+		printf("The result of multiplication of the entered matrix is : \n");	
 		for(int i=0;i<m;i++)
 		{
 			for(int j=0;j<q;j++)
@@ -42,7 +42,7 @@ void output(int m,int n,int p,int q,int m3[m][q])
 		}
 	}
 	else 
-		printf("Not comapt.");
+		printf("Entered matrices cannot be multiplied.\n");
 }
 
 int main()
