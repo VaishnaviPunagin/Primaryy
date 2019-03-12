@@ -7,10 +7,15 @@ void input(int *num)
 	      scanf("%d",num);
 }
 
-void inputdigits(int *n)
+int finddigits(int num)
 {
-	      printf("Enter number of digits in the entered number.\n");
-	      scanf("%d",n);
+	int n=0;
+	while (num!=0)
+	{
+		num=num/10;
+		n++;
+	}	    
+	return n;  
 }
 
 void checkarm(int num,int n,int *temp,int *a)
@@ -37,7 +42,7 @@ int main()
 {
 	      int num,temp,a,n;
 	      input(&num);
-	      inputdigits(&n);
+	      n=finddigits(num);
 	      checkarm(num,n,&temp,&a);
 	      output(temp,a);
 	      return 0;
