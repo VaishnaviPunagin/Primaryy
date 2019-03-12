@@ -12,7 +12,7 @@ void inputmatrix(int m, int n, int matrix[m][n])
     for(i=0;i<m;i++)
         for(j=0;j<n;j++)
         {
-            printf("\nEnter value for position [%d][%d]",i,j);
+            printf("Enter value for position [%d][%d] ",i,j);
             scanf("%d",&matrix[i][j]);
         }
     printf("\n");
