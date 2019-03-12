@@ -17,7 +17,7 @@ void inputmatrix(int m, int n, int a[m][n])
 			}
 }
 
-int diagonal(int m, int n, int a[m][n],int *check, int b[])
+void diagonal(int m, int n, int a[m][n],int *check, int b[])
 {
 	if(m==n)
 	{
