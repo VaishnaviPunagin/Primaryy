@@ -21,10 +21,11 @@ void op(int m)
       printf("\nLargest of the three entered numbers is %d \n",m);
 }
 
-void main()
+int main()
 {
       int a,b,c,m;
       in(&a,&b,&c);
       m=com(a,b,c);
       op(m);
+      return 0;
 }
