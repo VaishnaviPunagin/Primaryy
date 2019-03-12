@@ -22,40 +22,41 @@ float calfare(float time,char type)
 		case 'C':         if(time<=2)
 				  {
 					fare=time*20;
-					return fare;
+					type=fare;
 				  }
 				  else
 				  {
 				   	fare=(2*20)+((time-2)*30);
-					return fare;
+					type=fare;
 				  }
 				  break;
 		case 'b':
 		case 'B':	  if(time<=4)
 				  {
 					fare=time*40;
-					return fare;
+					type=fare;
 				  }
 				  else
 				  {
 				   	fare=(4*40)+((time-4)*50);
-					return fare;
+					type=fare;
 				  }
 				  break;
 		case 't':
 		case 'T': 	  if(time<=3)
 				  {
 					fare=time*30;
-					return fare;
+					type=fare;
 				  }
 				  else
 				  {
 				   	fare=(3*30)+((time-3)*40);
-					return fare;
+					type=fare;
 				  }
 				  break;
 		default : printf("ERROR. Invalid entries. Try again.\n");
 	}
+	return type;
 }
 
 void output(float bill)
@@ -71,4 +72,3 @@ int main()
 	bill=calfare(time,type);
 	output(bill);
 }
-
