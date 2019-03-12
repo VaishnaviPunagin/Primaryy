@@ -2,7 +2,7 @@
 //LINEAR SEARCH
 void inputsize(int *n)
 {
-	      printf("Please enter the size of array! \n");
+	      printf("Please enter the size of the simgle dimensional array! \n");
 	      scanf("%d",n);
 }
 
