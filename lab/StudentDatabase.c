@@ -57,7 +57,7 @@ void output(int check,int pos,int n,struct student s[])
 			    printf("Department : %s  \n",s[pos].dept);
 			    printf("Name : %s \n",s[pos].name);
 			    printf("Marks : %d  \n",s[pos].mark);
-         	printf("Grade : %s \n",s[pos].grade);
+         	            printf("Grade : %s \n",s[pos].grade);
 		}
 	   else
 			    printf("Entered roll number does not exist in the entered list. Try again.\n");
@@ -74,6 +74,3 @@ int main()
        	output(check,pos,n,s);
 	      return 0;
 }
-	
-	
-	
