@@ -1,9 +1,10 @@
+
 #include<stdio.h>
 
 struct fraction
 {
     int num,den;
-}f1,f2;
+};
 
 void inputn(int *n)
 {
@@ -15,10 +16,11 @@ void input(int n,struct fraction f[])
 {
       for(int i=0;i<n;i++)
       {
-            printf("\nEnter value of numerator %d : ",i+1);
+            printf("Enter value of numerator %d : ",i+1);
             scanf("%d",&f[i].num);
-            printf("\nEnter value of denominator %d : ",i+1);
+            printf("Enter value of denominator %d : ",i+1);
             scanf("%d",&f[i].den);
+            printf("\n");
       }
 }
 
