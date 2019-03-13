@@ -42,9 +42,9 @@ void calroots(float a,float b,float c,float d,struct complxroot *r1,struct compl
 	else 
 	{
 		r1->real=(-b)/(2*a);
-		r1->im=sqrt(-d)/(2*a);
-		r2->real=r1->real;
-		r2->im=r1->im;	
+		r1->im=+sqrt(-d)/(2*a);
+		r2->real=(-b)/(2*a);;
+		r2->im=-(sqrt(-d)/(2*a));	
 	}
 }
 
@@ -52,13 +52,27 @@ void calroots(float a,float b,float c,float d,struct complxroot *r1,struct compl
 void disroots(float d,struct complxroot r1,struct complxroot r2)
 {
 	if(d>0)
+	{
 		printf("Roots are real and distinct.\n");
+		printf("Root 1 =  %.2f+%.2fi\n",r1.real,r1.im);
+		printf("Root 2 =  %.2f-%.2fi\n",r2.real,r2.im);
+	}
+		
 	else if(d==0)
+	{
 		printf("Roots are real and equal.\n");
+		printf("Root 1 =  %.2f+%.2fi\n",r1.real,r1.im);
+		printf("Root 2 =  %.2f-%.2fi\n",r2.real,r2.im);
+	}
+			
 	else
+	{
 		printf("Roots are comlex.\n");
-	printf("Root 1 =  %.2f+i%.2f\n",r1.real,r1.im);
-	printf("Root 2 =  %.2f-i%.2f\n",r2.real,r2.im);
+		printf("Root 1 =  %.2f+%.2fi\n",r1.real,r1.im);
+		printf("Root 2 =  %.2f%.2fi\n",r2.real,r2.im);
+	}
+		
+	
 }
 
 
