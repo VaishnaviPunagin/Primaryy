@@ -7,31 +7,36 @@ void testcases(int *n)
 	scanf("%d",n);
 }
 
+struct points
+	{
+		float x,y;
+	};
 
 struct rectangles
 {
-	float p1x,p1y,p2x,p2y,p3x,p3y;
+	struct points p1,p2,p3;
+	//float p1x,p1y,p2x,p2y,p3x,p3y;
 	float area;
 };
 
-void invals(int n, struct rectangles r[n])
+void invals(int n, struct rectangles r[n],struct points p1,struct points p2,struct points p3)
 {
 	for(int i=0;i<n;i++)
 	{
-		printf("Enter values of three cordinates(x,y) for rectangle %d",i+1);
-		scanf("%f %f %f %f %f %f",&r[i].p1x,&r[i].p1y,&r[i].p2x,&r[i].p2y,&r[i].p3x,&r[i].p3y);
+		printf("Enter values of three cordinates(x,y) for rectangle %d  ",i+1);
+		scanf("%f %f %f %f %f %f",&r[i].p1.x,&r[i].p1.y,&r[i].p2.x,&r[i].p2.y,&r[i].p3.x,&r[i].p3.y);
 	}
 
 }
 
-void calarea(int n,struct rectangles r[n])
+void calarea(int n,struct rectangles r[n],struct points p1,struct points p2,struct points p3)
 {
 	for(int i=0;i<n;i++)
 	{
 		float d1,d2,d3;
-		d1=sqrt(pow(r[i].p2y-r[i].p1y,2)+pow(r[i].p2x-r[i].p1x,2));
-		d2=sqrt(pow(r[i].p3y-r[i].p2y,2)+pow(r[i].p3x-r[i].p2x,2));
-		d3=sqrt(pow(r[i].p1y-r[i].p3y,2)+pow(r[i].p1x-r[i].p3x,2));
+		d1=sqrt(pow(r[i].p2.y-r[i].p1.y,2)+pow(r[i].p2.x-r[i].p1.x,2));
+		d2=sqrt(pow(r[i].p3.y-r[i].p2.y,2)+pow(r[i].p3.x-r[i].p2.x,2));
+		d3=sqrt(pow(r[i].p1.y-r[i].p3.y,2)+pow(r[i].p1.x-r[i].p3.x,2));
 		if(d1>d2 && d1>d3)
 			r[i].area=d2*d3;
 		if(d2>d1 && d2>d3)
@@ -41,11 +46,11 @@ void calarea(int n,struct rectangles r[n])
 	}
 }
 
-void output(int n, struct rectangles r[n])
+void output(int n, struct rectangles r[n],struct points p1,struct points p2,struct points p3)
 {
 	for(int i=0;i<n;i++)
 	{
-		printf("Area of rectangle with vertices (%.1f,%.1f)(%.1f,%.1f)(%.1f,%.1f) is %.1f \n",r[i].p1x,r[i].p1y,r[i].p2x,r[i].p2y,r[i].p3x,r[i].p3y,r[i].area);
+		printf("Area of rectangle with vertices (%.1f,%.1f)(%.1f,%.1f)(%.1f,%.1f) is %.1f \n",r[i].p1.x,r[i].p1.y,r[i].p2.x,r[i].p2.y,r[i].p3.x,r[i].p3.y,r[i].area);
 	}	
 }
 
@@ -54,8 +59,9 @@ int main()
 	int n;
 	testcases(&n);
 	struct rectangles r[n];
-	invals(n,r);
-	calarea(n,r);
-	output(n,r);
+	struct points p1,p2,p3;
+	invals(n,r,p1,p2,p3);
+	calarea(n,r,p1,p2,p3);
+	output(n,r,p1,p2,p3);
 	return 0;
 }
