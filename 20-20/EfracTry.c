@@ -1,4 +1,4 @@
-//EFRAC TRIAL LOL
+//EFRAC TRIAL 
 #include<stdio.h>
 #include<math.h>
 
