@@ -65,7 +65,6 @@ int main()
 	int n;
 	testcases(&n);
 	struct rectangles r[n];
-	//struct point p1,p2,p3;
 	getcoordinates(n,r);
 	calarea(n,r);
 	output(n,r);
