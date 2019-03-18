@@ -7,19 +7,18 @@ void testcases(int *n)
 	scanf("%d",n);
 }
 
-struct points
+struct point
 	{
 		float x,y;
 	};
 
 struct rectangles
 {
-	struct points p1,p2,p3;
-	//float p1x,p1y,p2x,p2y,p3x,p3y;
+	struct point p1,p2,p3;
 	float area;
 };
 
-void invals(int n, struct rectangles r[n],struct points p1,struct points p2,struct points p3)
+void invals(int n, struct rectangles r[n])
 {
 	for(int i=0;i<n;i++)
 	{
@@ -29,7 +28,7 @@ void invals(int n, struct rectangles r[n],struct points p1,struct points p2,stru
 
 }
 
-void calarea(int n,struct rectangles r[n],struct points p1,struct points p2,struct points p3)
+void calarea(int n,struct rectangles r[n])
 {
 	for(int i=0;i<n;i++)
 	{
@@ -46,7 +45,7 @@ void calarea(int n,struct rectangles r[n],struct points p1,struct points p2,stru
 	}
 }
 
-void output(int n, struct rectangles r[n],struct points p1,struct points p2,struct points p3)
+void output(int n, struct rectangles r[n])
 {
 	for(int i=0;i<n;i++)
 	{
@@ -59,9 +58,9 @@ int main()
 	int n;
 	testcases(&n);
 	struct rectangles r[n];
-	struct points p1,p2,p3;
-	invals(n,r,p1,p2,p3);
-	calarea(n,r,p1,p2,p3);
-	output(n,r,p1,p2,p3);
+	struct point p1,p2,p3;
+	invals(n,r);
+	calarea(n,r);
+	output(n,r);
 	return 0;
 }
