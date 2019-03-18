@@ -29,7 +29,7 @@ void getcoordinates(int n, struct rectangles r[n])
 }
 
 
-float caldistance(float *d1,float *d2,float *d3,int i,struct rectangles r[i])
+void caldistance(float *d1,float *d2,float *d3,int i,struct rectangles r[i])
 {
 	*d1=sqrt(pow(r[i].p2.y-r[i].p1.y,2)+pow(r[i].p2.x-r[i].p1.x,2));
 	*d2=sqrt(pow(r[i].p3.y-r[i].p2.y,2)+pow(r[i].p3.x-r[i].p2.x,2));
@@ -65,7 +65,6 @@ int main()
 	int n;
 	testcases(&n);
 	struct rectangles r[n];
-	//struct point p1,p2,p3;
 	getcoordinates(n,r);
 	calarea(n,r);
 	output(n,r);
