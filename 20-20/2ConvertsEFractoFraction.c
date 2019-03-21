@@ -30,31 +30,28 @@ void getefractions(int n,int *en,struct efractions e[n])
 	}
 }
 
-struct fraction addefractions(int en,struct efractions ef[en])
+struct fraction addefracs(int en,struct efractions ef)
 {
-	int j,den=1,num=0;
-	int x[en];
-	for(j=0;j<en;j++)
-		{
-			x[j]=ef[j].den;
-		}					
-	for(j=0;j<en;j++)
-		den=den*x[j];
-	for(j=0;j<en;j++)
-		num=num+(den/x[j]);
-	struct fraction f={num,den};
-	return f;
+    int num=0,den=1,i;
+    for(i=0;i<en;i++)
+        den=den*ef.den[i];
+    for(i=0;i<en;i++)
+        num=num+(den/ef.den[i]);
+    struct fraction f={num,den};
+    return f;
 }
 
-
-void getsumfractions(int n,int en,struct efractions e[n],struct fraction f[n])
+void sumfractions(int n,int en,struct efractions e[n],struct fraction f[n])
 {
-	for(int i=0;i<n;i++)
-	{
-		struct efractions ef=e[i];
-		f[i]=addefractions(en,e);
-	}	
+    int i;
+    for(i=0;i<n;i++)
+    {
+        struct efractions ef=e[i];
+        f[i]=addefracs(en,ef);
+    }
+    
 }
+
 
 void display(int n,struct fraction f[n])
 {
@@ -66,7 +63,6 @@ void display(int n,struct fraction f[n])
 }
 
 
-
 int main()
 {
 	int n,en;
@@ -74,7 +70,7 @@ int main()
 	struct efractions e[n];
 	struct fraction f[n];
 	getefractions(n,&en,e);
-	getsumfractions(n,en,e,f);
+	sumfractions(n,en,e,f);
 	display(n,f);
 	return 0;
 }
