@@ -15,7 +15,7 @@ struct point
 struct rectangles
 {
 	struct point p1,p2,p3;
-	float area;
+	float area,l,b;
 };
 
 void getcoordinates(int n, struct rectangles r[n])
@@ -29,27 +29,37 @@ void getcoordinates(int n, struct rectangles r[n])
 }
 
 
-void caldistance(float *d1,float *d2,float *d3,struct rectangles temp)  //passing i rectangles, instead of the i th rectanlge????
+void caldimensions(struct rectangles temp,float *l,float *b)  
 {
-	*d1=sqrt(pow(temp.p2.y-temp.p1.y,2)+pow(temp.p2.x-temp.p1.x,2));
-	*d2=sqrt(pow(temp.p3.y-temp.p2.y,2)+pow(temp.p3.x-temp.p2.x,2));
-	*d3=sqrt(pow(temp.p1.y-temp.p3.y,2)+pow(temp.p1.x-temp.p3.x,2));
+	float d1,d2,d3;
+	d1=sqrt(pow(temp.p2.y-temp.p1.y,2)+pow(temp.p2.x-temp.p1.x,2));
+	d2=sqrt(pow(temp.p3.y-temp.p2.y,2)+pow(temp.p3.x-temp.p2.x,2));
+	d3=sqrt(pow(temp.p1.y-temp.p3.y,2)+pow(temp.p1.x-temp.p3.x,2));
+	if(d1>d2 && d1>d3)
+			{
+				*l=d2;
+				*b=d3;
+			}
+	if(d2>d1 && d2>d3)
+			{
+				*l=d1;
+				*b=d3;
+			}
+	if(d3>d1 && d3>d2)
+			{
+				*l=d1;
+				*b=d2;
+			}
 }
 
 void calarea(int n,struct rectangles r[n])
 {
 	for(int i=0;i<n;i++)
 	{
-		float d1,d2,d3;
+		float l,b;
 		struct rectangles temp=r[i];
-		caldistance(&d1,&d2,&d3,temp);
-		
-		if(d1>d2 && d1>d3)
-			r[i].area=d2*d3;
-		if(d2>d1 && d2>d3)
-			r[i].area=d1*d3;
-		if(d3>d1 && d3>d2)
-			r[i].area=d1*d2;
+		caldimensions(temp,&l,&b);
+		r[i].area=l*b;
 	}
 }
 
@@ -57,7 +67,7 @@ void output(int n, struct rectangles r[n])
 {
 	for(int i=0;i<n;i++)
 	{
-		printf("Area of rectangle with vertices (%.1f,%.1f),(%.1f,%.1f),(%.1f,%.1f) is %.1f \n",r[i].p1.x,r[i].p1.y,r[i].p2.x,r[i].p2.y,r[i].p3.x,r[i].p3.y,r[i].area);
+		printf("Area of rectangle with vertices (%.1f,%.1f),(%.1f,%.1f),(%.1f,%.1f) is %.1f\n",r[i].p1.x,r[i].p1.y,r[i].p2.x,r[i].p2.y,r[i].p3.x,r[i].p3.y,r[i].area);
 	}	
 }
 
