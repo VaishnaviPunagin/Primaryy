@@ -5,72 +5,65 @@ struct fraction
 	int num,den;
 };
 
-struct efractions
+struct efracs
 {
-	int den[1000];
+	int nd,den[100];
 };
 
-int testcases(int *n)
+void testcases(int *n)
 {
-	printf("How many trials? \n");
+	printf("How many times ? ");
 	scanf("%d",n);
 }
 
-void getefractions(int n,int *en,struct efractions e[n])
+void inputefracs(int n,struct efracs e[n])
 {
 	for(int i=0;i<n;i++)
 	{
-		printf("How many egyptian fractions will you enter  :  ");
-		scanf("%d",en);
-		for(int j=0;j<*en;j++)
+		printf("How many denominators for case %d : ",i);
+		scanf("%d",&e[n].nd);
+		for(int j=0;j<e[n].nd;j++)
 		{
-			printf("Enter denominator for %d numbered fraction : ",j);
+			printf("Enter den %d for case %d : ",j,i);
 			scanf("%d",&e[i].den[j]);
-		}	
+		}
 	}
 }
 
-struct fraction addefracs(int en,struct efractions ef)
+void add(int n,struct efracs e[n],struct fraction f[n])
 {
-    int num=0,den=1,i;
-    for(i=0;i<en;i++)
+    for(int i=0;i<n;i++)
+    {
+        struct efracs ef=e[i];
+        f[i]=addefracs(ef);
+    }
+
+for(int i=0;i<n;i++)
+    {
+        
+        printf("SUM IS %d/%d \n",f[i].num,f[i].den);
+    }
+
+}
+
+struct fraction addefracs(struct efracs ef)
+{
+	int num=0,den=1,i;
+    for(int i=0;i<ef.nd;i++)
         den=den*ef.den[i];
-    for(i=0;i<en;i++)
+    for(int i=0;i<ef.nd;i++)
         num=num+(den/ef.den[i]);
     struct fraction f={num,den};
     return f;
 }
 
-void sumfractions(int n,int en,struct efractions e[n],struct fraction f[n])
-{
-    int i;
-    for(i=0;i<n;i++)
-    {
-        struct efractions ef=e[i];
-        f[i]=addefracs(en,ef);
-    }
-    
-}
-
-
-void display(int n,struct fraction f[n])
-{
-	for(int i=0;i<n;i++)
-	{
-		printf("\nSUM IS %d/%d .",f[i].num,f[i].den);
-	}
-
-}
-
-
 int main()
 {
-	int n,en;
+	int n;
 	testcases(&n);
-	struct efractions e[n];
 	struct fraction f[n];
-	getefractions(n,&en,e);
-	sumfractions(n,en,e,f);
-	display(n,f);
+	struct efracs e[n];
+	inputefracs(n,e);
+	add(n,e,&f);
 	return 0;
 }
