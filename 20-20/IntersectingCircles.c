@@ -22,9 +22,10 @@ void getcircles(int t,struct circles circle[t])
 {
 	for(int i=0;i<t;i++)
 	{
-		printf("Radius of circle %d. : ",i+1);
+		printf("NOTE : circle 1 and 2 shall be compared. And then circle 3 and 4, and so on.\n")
+		printf("Radius of circle %d : ",i+1);
 		scanf("%f",&circle[i].r);
-		printf("Co-ordinates of center of circle %d.1 : ",i+1);
+		printf("Co-ordinates of center of circle %d : ",i+1);
 		scanf("%f %f",&circle[i].c.x,&circle[i].c.y);
 	}
 }
@@ -36,11 +37,11 @@ void check(int t,struct circles circle[t])
 		float dc=sqrt(pow(circle[i].c.x-circle[i+1].c.x,2)+pow(circle[i].c.y-circle[i+1].c.y,2));
 		float d=circle[i].r+circle[i+1].r;
 		if(dc>d)
-			printf("TWO intersect \n");
+			printf("NO intersect \n");
 		if(dc==d)
 			printf("Intersect one point \n");
 		if(dc<d)
-			printf("NO POINTS intersect \n");
+			printf("TWO intersect \n");
 	}
 }
 
