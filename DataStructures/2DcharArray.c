@@ -1,14 +1,17 @@
 #include<stdio.h>
 int main()
 {
-	char s[3][10];
-	for(int i=0;i<3;i++)
+	int n;
+	printf("How many strings do you want to enter?");
+	scanf("%d",&n);	
+	char s[n][100];
+	for(int i=0;i<n;i++)
 	{	
-		printf("Enter words : ");
+		printf("Enter word [%d] : ",i+1);
 		scanf("%s",s[i]);
 	}
 	printf("Strings stored are : \n");
-	for(int i=0;i<3;i++)
+	for(int i=0;i<n;i++)
 		printf("[%d] --> %s\n",i+1,s[i]);
 	return 0;
 }
