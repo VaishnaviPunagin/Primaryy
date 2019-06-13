@@ -4,11 +4,11 @@ int main()
 	char s[3][10];
 	for(int i=0;i<3;i++)
 	{	
-		printf("Enter word : ");
+		printf("Enter words : ");
 		scanf("%s",s[i]);
 	}
-	printf("String")
+	printf("Strings stored are : \n");
 	for(int i=0;i<3;i++)
-		printf("Stored string is :  %s\n",s[i]);
+		printf("[%d] --> %s\n",i+1,s[i]);
 	return 0;
 }
