@@ -10,6 +10,7 @@ void input(int n,char *s[n])
 		printf("Enter word : ");
 		scanf("%s",a);		
 		s[i]=malloc(strlen(a)+1);
+		s[i]=a;
 	}
 }
 
