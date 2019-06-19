@@ -39,15 +39,15 @@ void display(int n, struct student s[])
 
 int comparebyage(const void *a,const void *b)
 {
-	struct student p=(struct student *)a;
-	struct student q=(struct student *)b;
-	return p.age-q.age;
+	struct student *p=(struct student *)a;
+	struct student *q=(struct student *)b;
+	return (p->age-q->age);
 
 }
 
 void sortbyage(int n, struct student s[])
 {
-	qsort(s,n,sizeof(int),comparebyage);
+	qsort(s,n,sizeof(struct student),comparebyage);
 	printf("\nStudent details sorted by age are : \n");
 	display(n,s);
 }
