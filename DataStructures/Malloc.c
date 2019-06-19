@@ -4,13 +4,14 @@
 
 void input(int n,char *s[n])
 {
-	char a[1000];
+	char a[100];
 	for(int i=0;i<n;i++)
 	{
 		printf("Enter word : ");
-		scanf("%s",a);		
+		scanf("%s",a);	
+		printf("%ld",strlen(a));	
 		s[i]=malloc(strlen(a)+1);
-		s[i]=a;
+		strcpy(s[i],a);
 	}
 }
 
@@ -22,7 +23,7 @@ int comparator(const void *a, const void *b)
 int main()
 {
 	int n;
-	printf("How many strings ??");
+	printf("How many strings ?? :  ");
 	scanf("%d",&n);	
 	char *s[n];
 	input(n,s);
@@ -30,8 +31,9 @@ int main()
 	for(int i=0;i<n;i++)	
 		printf("%s  ",s[i]);
 	qsort(&s[0],n,sizeof(char *),comparator);
-	printf("WORDS STORED AFTER SORT ARE : \n");
+	printf("\nWORDS STORED AFTER SORT ARE : \n");
 	for(int i=0;i<n;i++)	
-		printf("%s  ",s[i]);	
+		printf("%s  ",s[i]);
+	printf("\n");	
 	return 0;
 }
