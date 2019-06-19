@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-void input(int n,char *s[n])
+void getstrings(int n,char *s[n])
 {
 	char a[100];
 	for(int i=0;i<n;i++)
@@ -15,25 +15,32 @@ void input(int n,char *s[n])
 	}
 }
 
+int size()
+{
+	int n;
+	printf("How many strings ? : ");
+	scanf("%d",&n);
+	return n;
+}
+void display(int n, char *s[n])
+{
+	for(int i=0;i<n;i++)	
+		printf("[%d] --> %s \n",i+1,s[i]);
+}
 int comparator(const void *a, const void *b)
 {
-	return strcmp(*(const char **)a,*(char* const*)b);
+	return strcmp(*(const char **)a,*(const char **)b);
 }
 
 int main()
 {
-	int n;
-	printf("How many strings ?? :  ");
-	scanf("%d",&n);	
+	int n=size();	
 	char *s[n];
-	input(n,s);
+	getstrings(n,s);
 	printf("WORDS STORED ARE : \n");
-	for(int i=0;i<n;i++)	
-		printf("%s  ",s[i]);
-	qsort(&s[0],n,sizeof(char *),comparator);
+	display(n,s);
+	qsort(&s,n,sizeof(char *),comparator);
 	printf("\nWORDS STORED AFTER SORT ARE : \n");
-	for(int i=0;i<n;i++)	
-		printf("%s  ",s[i]);
-	printf("\n");	
+	display(n,s);
 	return 0;
 }
