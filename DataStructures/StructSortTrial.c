@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 struct student
 {
@@ -45,10 +46,24 @@ int comparebyage(const void *a,const void *b)
 
 }
 
+int comparebyname(const void *a, const void *b)
+{
+	struct student *p=(struct student *)a;
+	struct student *q=(struct student *)b;
+	return strcmp(p->name,q->name); 
+}
+
 void sortbyage(int n, struct student s[])
 {
 	qsort(s,n,sizeof(struct student),comparebyage);
 	printf("\nStudent details sorted by age are : \n");
+	display(n,s);
+}
+
+void sortbyname(int n, struct student s[])
+{
+	qsort(s,n,sizeof(struct student),comparebyname);
+	printf("\nStudent details sorted by NAME are : \n");
 	display(n,s);
 }
 
@@ -59,5 +74,6 @@ int main()
 	getdata(n,s);
 	display(n,s);
 	sortbyage(n,s);
-	//sortbyname(n,s);
+	sortbyname(n,s);
+	return 0;
 }
