@@ -2,78 +2,47 @@
 #include<stdlib.h>
 #include<string.h>
 
-struct student
+void getstrings(int n,char *s[n])
 {
-	int age;
-	char name[100];
-};
+	char a[100];
+	for(int i=0;i<n;i++)
+	{
+		printf("Enter word : ");
+		scanf("%s",a);	
+		printf("%ld",strlen(a));	
+		s[i]=malloc(strlen(a)+1);
+		strcpy(s[i],a);
+	}
+}
 
-int howmany()
+int size()
 {
 	int n;
-	printf("How many students' data ? : ");
+	printf("How many strings ? : ");
 	scanf("%d",&n);
 	return n;
 }
-
-void getdata(int n, struct student s[])
+void display(int n, char *s[n])
 {
-	for(int i=0;i<n;i++)
-	{
-		printf("Student[%d]'s details:\n Name : ",i+1);
-		scanf("%s",s[i].name);
-		printf("Please enter age : ");
-		scanf("%d",&s[i].age);
-		printf("\n");
-	}
+	for(int i=0;i<n;i++)	
+		printf("[%d] --> %s \n",i+1,s[i]);
 }
-
-void display(int n, struct student s[])
+int comparator(const void *a, const void *b)
 {
-	printf("\n******Stored details are:******\n");	
-	for(int i=0;i<n;i++)
-	{
-		printf("Student[%d]'s details:\nName : %s\n",i+1,s[i].name);
-		printf("Age : %d\n\n",s[i].age);
-	}
-}
-
-int comparebyage(const void *a,const void *b)
-{
-	struct student *p=(struct student *)a;
-	struct student *q=(struct student *)b;
-	return (p->age-q->age);
-
-}
-
-int comparebyname(const void *a, const void *b)
-{
-	struct student *p=(struct student *)a;
-	struct student *q=(struct student *)b;
-	return strcmp(p->name,q->name); 
-}
-
-void sortbyage(int n, struct student s[])
-{
-	qsort(s,n,sizeof(struct student),comparebyage);
-	printf("\nStudent details sorted by age are : \n");
-	display(n,s);
-}
-
-void sortbyname(int n, struct student s[])
-{
-	qsort(s,n,sizeof(struct student),comparebyname);
-	printf("\nStudent details sorted by NAME are : \n");
-	display(n,s);
+	return strcmp(*(const char **)a,*(const char **)b);
 }
 
 int main()
 {
-	int n=howmany();
-	struct student s[n];
-	getdata(n,s);
+	int n=size();	
+	char *s[n];
+	getstrings(n,s);
+	printf("WORDS STORED ARE : \n");
 	display(n,s);
-	sortbyage(n,s);
-	sortbyname(n,s);
+	qsort(&s,n,sizeof(char *),comparator);
+	printf("\nWORDS STORED AFTER SORT ARE : \n");
+	display(n,s);
+	for(int i=0;i<n;i++)
+		free(s[i]);
 	return 0;
 }
