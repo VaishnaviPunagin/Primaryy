@@ -33,9 +33,7 @@ void add(int m, int n, int a[m][n],int p, int q, int b[p][q])
 		printf("Sum of matrix A and matrix B is : \n");
 		for(int i=0;i<m;i++)
 			for(int j=0;j<n;j++)
-			{
 				c[i][j]=a[i][j]+b[i][j];
-			}
 		display(m,n,c);
 	}
 	else
@@ -64,13 +62,13 @@ void multiply(int m, int n, int a[m][n],int p, int q, int b[p][q])
 		int c[m][q];
 		printf("Product of matrix A and matrix B is : \n");
 		for(int i=0;i<m;i++)
-			for(int j=0;j<n;j++)
+			for(int j=0;j<q;j++)
 				c[i][j]=0;
 		for(int i=0;i<m;i++)
-			for(int j=0;j<n;j++)
-				for(int k=0;k<n;k++)
-					c[i][j]+=a[i][k]+b[k][j];
-		display(m,n,c);
+			for(int j=0;j<q;j++)
+				for(int k=0;k<p;k++)
+					c[i][j]+=a[i][k]*b[k][j];
+		display(m,q,c);
 	}
 	else
 		printf("Orders of the matrices do NOT match, cannot be added. \n");
