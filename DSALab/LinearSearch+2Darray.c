@@ -14,6 +14,17 @@ void getarray(int m, int n, int a[m][n])
 			scanf("%d",&a[i][j]);
 		}
 }
+
+void display(int m, int n, int a[m][n])
+{
+	for(int i=0;i<m;i++)
+	{
+		for(int j=0;j<n;j++)
+			printf("%d ",a[i][j]);
+		printf("\n");
+	}
+}
+
 int search(int m, int n, int a[m][n],int key)
 {
 	int c=0;
@@ -34,6 +45,8 @@ int main()
 	getorder(&m,&n);
 	int a[m][n];
 	getarray(m,n,a);
+	printf("The stored matrix is : \n");
+	display(m,n,a);
 	printf("Enter an element you want to search for! This program shall determine the position, if it exists!\n");
 	scanf("%d",&key);
 	int c=search(m,n,a,key);
