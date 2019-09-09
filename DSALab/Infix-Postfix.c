@@ -52,7 +52,9 @@ void convert(char ip[], char op[])
 { 
 	int i=0,j=0;
 	char c,x;
-	c=ip[i];         
+	c=ip[i]; 
+	push('(');
+	strcat(ip,")");        
 	while(c != '\0')        
 	{
 		if(c== '(')
