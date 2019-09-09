@@ -42,7 +42,7 @@ void evaluate(char p[])
 	while(x!=')')
 	{
 		if( isalpha(x) || isdigit(x) )
-			push(x-'0');
+			push(x-48);
 		if(operator(x)==1)
 		{
 			int a=pop(),b=pop(),value; 
