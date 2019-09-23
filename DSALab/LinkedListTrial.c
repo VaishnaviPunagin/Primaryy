@@ -6,30 +6,42 @@ struct node
 	struct node *next;
 };
 
+struct node *start=NULL;
+
 void display(struct node *start)
 {
 	printf("LINKED LIST CONTENTS\n\n");
 	struct node *s;
 	s=start;
-	int i=0;
+	int i=1;
 	while(s!=NULL)
 	{
-		printf("%d --> %d\n",i,start->value);
+		printf("%d --> %d\n",i,s->value);
 		i++;		
 		s=s->next;
 	}
 }
 
-struct node createnode()
+void createnode()
 {
-	struct node n,*start;
-	start=(struct node*)malloc(sizeof(n));
+	struct node n,*temp;
+	temp=(struct node*)malloc(sizeof(n));
 	printf("Enter value! \n");
 	int v;
 	scanf("%d",&v);
-	n.value=v;
-	start->next=NULL;
-	return *start;
+	temp->value=v;
+	if(start==NULL)
+		start=temp;
+	else
+	{
+		struct node *t;
+		t=start;
+		while(t!=NULL)
+		{
+			t=t->next;
+		}
+		t->next=temp;
+	}
 }
 
 int main()
@@ -39,8 +51,7 @@ int main()
 	while(c=='y')
 	{
 		printf("Next, an element shall be inserted into the list! \n");
-		struct node *start;
-		start=createnode();
+		createnode();
 		printf("Do you want to see the contents of the list? Say (y/n) :: ");
 		char o;
 		scanf(" %c",&o);
