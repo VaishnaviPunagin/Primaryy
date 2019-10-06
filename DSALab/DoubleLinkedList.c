@@ -90,9 +90,10 @@ void display()
 	}
 }
 
-struct node *check(int *c, int v)
+struct node *check(int *c, int v,int *i)
 {
 	struct node *s=start,*where;
+
 	while(s!=NULL)
 	{
 		if(v==s->value)
@@ -101,6 +102,7 @@ struct node *check(int *c, int v)
 			where=s;
 		}
 		s=s->right;
+		*i++;
 	}
 	return where;
 }
@@ -113,14 +115,21 @@ void delete()
 	if(o==1)
 	{
 		printf("Enter the value you want to delete ! \n");
-		int v,c=0;
+		int v,c=0,i=1,n=howmanynodes();
 		scanf("%d",&v);
-		struct node *where=check(&c,v);
+		struct node *where=check(&c,v,&i);
 		if(c==0)
 		{
 			printf("Entered value does not exist in the list, HOW DO YOU EXPECT ME TO DELETE THIS !?\n");
 		}
-		else
+		///WHAT IS THIS SUPPOSED TO BE///
+		else if(i==n)
+		{
+			struct node *a=where->left;
+			a->right=NULL;
+			free(where);
+		}
+		else 
 		{
 			struct node *a,*b;
 			a=where->left;
@@ -194,7 +203,8 @@ int main()
 			case 2 : atloc(); break;
 			case 3 : endd(); break;
 			case 4 : delete(); break;
-			case 5 : display(); break;	
+			case 5 : display(); break;
+			default : printf("Invalid option picked ! Try again later m8 ..");
 		}
 		printf("\nWould you like to perform another set of operations? Say (y/n) :: ");
 		scanf(" %c",&c);
