@@ -33,6 +33,15 @@ int howmanynodes()
 	return c;
 }
 
+void endd()
+{
+	struct node *s=start,*add=create();
+	while(s->right!=NULL)
+		s=s->right;
+	s->right=add;
+	add->left=s;
+}
+
 void front()
 {
 	struct node *add=create();
@@ -70,15 +79,6 @@ void atloc()
 	}
 }
 
-void endd()
-{
-	struct node *s=start,*add=create();
-	while(s->right!=NULL)
-		s=s->right;
-	s->right=add;
-	add->left=s;
-}
-
 void display()
 {
 	printf("\n--------\nDouble Linked List\n---------\n");
@@ -88,6 +88,94 @@ void display()
 		printf("%ld | %ld -- %d | %ld\n",s->left,s,s->value,s->right);
 		s=s->right;
 	}
+}
+
+struct node *check(int *c, int v)
+{
+	struct node *s=start,*where;
+	while(s!=NULL)
+	{
+		if(v==s->value)
+		{
+			*c=1;
+			where=s;
+		}
+		s=s->right;
+	}
+	return where;
+}
+
+void delete()
+{
+	printf("Let's delete a node. Delete by value or location? Enter (1) for by value, or (2) for by location : ");
+	int o;
+	scanf("%d",&o);
+	if(o==1)
+	{
+		printf("Enter the value you want to delete ! \n");
+		int v,c=0;
+		scanf("%d",&v);
+		struct node *where=check(&c,v);
+		if(c==0)
+		{
+			printf("Entered value does not exist in the list, HOW DO YOU EXPECT ME TO DELETE THIS !?\n");
+		}
+		else
+		{
+			struct node *a,*b;
+			a=where->left;
+			b=where->right;
+			a->right=b;
+			b->left=a;
+			free(where);
+			printf("Deleted! \n");
+		}
+	}
+	else if(o==2)
+	{
+		printf("What locstion's node do you want to delete? :: ");
+		int pos,n=howmanynodes();
+		scanf("%d",&pos);
+		if(pos==1)
+		{
+			struct node *s;
+			s=start->right;
+			start=s;
+			s->left=NULL;
+		}
+		else if(pos==n)
+		{
+			struct node *s=start,*a;
+			while(s->right!=NULL)
+			{
+				s=s->right;			
+			}
+			a=s->left;
+			a->right=NULL;
+			free(s);	
+		}
+		else if(pos>n)
+			printf("Invalid location! Cannot delete lol \n");
+		else
+		{
+			struct node *s=start,*a,*b;
+			int i=1;
+			while(i!=pos)
+			{
+				s=s->right;
+				i++;
+			}
+			a=s->left;
+			b=s->right;
+			a->right=b;
+			b->left=a;
+			free(s);
+			printf("Job Done! \n");
+		}
+		
+	}
+	else
+		printf("Wrong choice, Try again later ! \n");
 }
 
 int main()
@@ -105,7 +193,7 @@ int main()
 			case 1 : front(); break;
 			case 2 : atloc(); break;
 			case 3 : endd(); break;
-			//case 4 : delete(); break;
+			case 4 : delete(); break;
 			case 5 : display(); break;	
 		}
 		printf("\nWould you like to perform another set of operations? Say (y/n) :: ");
