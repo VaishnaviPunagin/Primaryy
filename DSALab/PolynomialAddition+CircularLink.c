@@ -35,15 +35,19 @@ void add()
 			sadd=(struct term *)malloc(sizeof(struct term));
 			sadd->coefficient=ap->coefficient;
 			sadd->exp=ap->exp;
-			sadd->next=sum;
+			sadd->next=NULL;
 			if(sum==NULL)
+			{
 				sum=sadd;
+				sadd->next=sum;
+			}
 			else
 			{
 				struct term *s=sum;
-				while(s->next!=NULL)
+				while(s->next!=sum)
 					s=s->next;
 				s->next=sadd;
+				sadd->next=sum;
 			}	
 			ap=ap->next;
 		}
@@ -55,18 +59,21 @@ void add()
 			s=ap->coefficient+bp->coefficient;
 			sadd->coefficient=s;			
 			sadd->exp=ap->exp;
-			sadd->next=sum;
+			sadd->next=NULL;
 			if(sum==NULL)
+			{
 				sum=sadd;
+				sadd->next=sum;
+			}
 			else
 			{
 				struct term *s=sum;
-				while(s->next!=NULL)
+				while(s->next!=sum)
 					s=s->next;
 				s->next=sadd;
 			}
 			ap=ap->next;
-			bp=bp->next;	
+			bp=bp->next;
 
 		}
 		else if(ap->exp < bp->exp)
@@ -75,15 +82,19 @@ void add()
 			sadd=(struct term *)malloc(sizeof(struct term));
 			sadd->coefficient=bp->coefficient;
 			sadd->exp=bp->exp;
-			sadd->next=sum;
+			sadd->next=NULL;
 			if(sum==NULL)
+			{
 				sum=sadd;
+				sadd->next=sum;
+			}
 			else
 			{
 				struct term *s=sum;
-				while(s->next!=NULL)
+				while(s->next!=sum)
 					s=s->next;
 				s->next=sadd;
+				sadd->next=sum;
 			}	
 			bp=bp->next;
 		}
@@ -94,10 +105,11 @@ void display(struct term *p)
 {
 	printf("\n\nTHIS IS POLYNOMIAL\n");
 	struct term *pp=p;
+	printf(" | %d * x ^ %d |\n",pp->coefficient,pp->exp);
+	pp=pp->next;
 	while(pp!=p)
 	{
-		printf(" | %d * x ^ %d",pp->coefficient,pp->exp);
-		printf(" |\n");
+		printf(" | %d * x ^ %d |\n",pp->coefficient,pp->exp);
 		pp=pp->next;
 	}
 }
@@ -122,7 +134,7 @@ int main()
 				if(a==NULL)
 				{
 					a=add;
-					a->next=a;
+					add->next=a;
 				}
 				else
 				{
@@ -138,7 +150,7 @@ int main()
 				if(b==NULL)
 				{
 					b=add;
-					b->next=b;
+					add->next=b;
 				}
 				else
 				{
