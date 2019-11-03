@@ -38,7 +38,7 @@ void evaluate(char p[])
 	int i=0;
 	char x=p[i];
 	push('(');
-	strcat(p,"(");
+	strcat(p,")");
 	while(x!=')')
 	{
 		if( isalpha(x) || isdigit(x) )
