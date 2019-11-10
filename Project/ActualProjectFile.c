@@ -438,7 +438,8 @@ void edit()
 
 void admin()
 {
-    printf("\n********************\n-----Admin menu----\n1.Book a room \n2.Booking History \n3.Delete Booking \n4.Search a booking \n5.Edit a booking \n6.Main Menu\n******************\n");
+	system("clear");	
+	printf("\n********************\n-----Admin menu----\n1.Book a room \n2.Booking History \n3.Delete Booking \n4.Search a booking \n5.Edit a booking \n6.Main Menu\n******************\n");
     printf("Enter your selection");
     int op;
     scanf("%d",&op);
@@ -458,7 +459,7 @@ void admin()
 void custmenu()
 {
     printf("\n*****************\n----Booking Menu----\n1.Book a room \n2.Booking History \n3.Calendar \n4.Customer menu\n****************\n");
-    printf("Enter your option ::");
+    printf("Enter your option :: ");
     int op;
     scanf("%d",&op);
     switch(op)
@@ -475,9 +476,10 @@ void custmenu()
 }
 void MainMenu()
 {
+	system("clear");	
 	header();
 	delay(100);
-	system("clear");
+	char usrname[30],password[30];
 	printf("**********************************************************************\n");
 	printf("*********************\nWELCOME TO THE HOTEL\n*************************\n");
 	printf("1)Customer Log in\n2)Admin Log in\n3)Exit\n");
@@ -488,7 +490,16 @@ void MainMenu()
 	switch(option)
 	{
 		case 1 : customer(); break;
-		case 2 : admin(); break;
+		case 2 : printf("Admin Log in :: \n\nUSERNAME :: ");
+			 scanf("%s",usrname);
+			 printf("PASSWORD :: ");
+			 scanf("%s",password);
+			 if(strcmp(usrname,"admin")!=0 && strcmp(password,"adminpass")!=0)
+			 {
+			  	printf("You have entered the wrong username , or the wrong password. Access denied.\n");
+			  	delay(1000);
+			  	MainMenu();
+			 }admin(); break;
 		case 3 : exit(0);
 		default : printf("ERROR. You picked a wrong option. Redirecting you to Main Menu soon, please wait.\n\n"); delay(1000);
 	}
