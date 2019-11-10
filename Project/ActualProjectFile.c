@@ -30,7 +30,7 @@ void delay(int number_of_seconds)
 	int milli_seconds = 1000 * number_of_seconds;
 	clock_t start_time = clock();
 	while (clock() < start_time + milli_seconds)
-		printf("- - -\n");
+		;
 }
 
 int days_in_month[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
