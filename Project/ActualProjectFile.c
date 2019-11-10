@@ -21,7 +21,6 @@ struct CustomerDetails
 	char name[20];
 	char address[25];
 	char phonenumber[15];
-	char nationality[15];
 	char email[20];
 	char period[10];
 	char arrivaldate[10];
@@ -30,7 +29,8 @@ void delay(int number_of_seconds)
 {
 	int milli_seconds = 1000 * number_of_seconds;
 	clock_t start_time = clock();
-	while (clock() < start_time + milli_seconds);
+	while (clock() < start_time + milli_seconds)
+		printf("- - -\n");
 }
 
 int days_in_month[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
@@ -182,7 +182,7 @@ void existinguser()
 		if(strcmp(temp->name,usrname)==0 && strcmp(temp->password,p)==0)
 		{
 			printf("Welcome %s. We are glad to have you back! We shall soon redirect you to the booking menu\n",usrname);
-			delay(10000);
+			delay(1000);
             		custmenu();
 			break;
 		}
@@ -197,7 +197,7 @@ void existinguser()
 }
 void customer()
 {
-	printf("\n-----\n-----Customer menu-----\n1.New User\n2.Existing User\n3.Back to Main Menu\n4.Exit\n-----\n");
+	printf("\n-----Customer menu-----\n1.New User\n2.Existing User\n3.Back to Main Menu\n4.Exit\n");
 	printf("---------------------------------------------\nEnter an option (1-2-3-4) ::  ");
 	int option;
 	scanf("%d",&option);
@@ -237,8 +237,6 @@ void add()
 		scanf("%s",s.address);
 		printf("Enter Phone Number:\n");
 		scanf("%s",s.phonenumber);
-		printf("Enter Nationality:\n");
-		scanf("%s",s.nationality);
 		printf("Enter Email:\n");
 		scanf(" %s",s.email);
 		printf("Enter Period(\'x\'days):\n");
@@ -265,7 +263,6 @@ void list()
 	printf("NAME\t ");
 	printf("\tADDRESS ");
 	printf("\tPHONENUMBER ");
-	printf("\tNATIONALITY ");
 	printf("\tEMAIL ");
 	printf("\t\t  PERIOD ");
 	printf("\t ARRIVALDATE \n");
@@ -273,7 +270,7 @@ void list()
 		printf("-");
 	while(fread(&s,sizeof(s),1,f)==1)
 	{
-		printf("\n%s \t%s \t\t%s \t\t%s \t%s  \t%s  \t     %s  \t  %s",s.roomnumber, s.name , s.address , s.phonenumber ,s.nationality ,s.email,s.period,  s.arrivaldate);
+		printf("\n%s \t%s \t\t%s \t\t%s \t%s  \t%s  \t     %s  \t  ",s.roomnumber, s.name , s.address , s.phonenumber ,s.email,s.period,  s.arrivaldate);
 	}
 	printf("\n");
 	for(i=0;i<118;i++)
@@ -340,7 +337,6 @@ system("clear");
 			printf("\nName:\t%s",s.name);
 			printf("\nAddress:\t%s",s.address);
 			printf("\nPhone number:\t%s",s.phonenumber);
-			printf("\nNationality:\t%s",s.nationality);
 			printf("\nEmail:\t%s",s.email);
 			printf("\nPeriod:\t%s",s.period);
 			printf("\nArrival date:\t%s",s.arrivaldate);
@@ -375,7 +371,6 @@ system("clear");
 			printf("\nName:\t%s",s.name);
 			printf("\nAddress:\t%s",s.address);
 			printf("\nPhone number:\t%s",s.phonenumber);
-			printf("\nNationality:\t%s",s.nationality);
 			printf("\nEmail:\t%s",s.email);
 			printf("\nPeriod:\t%s",s.period);
 			printf("\nArrival date:\t%s",s.arrivaldate);
@@ -398,7 +393,7 @@ void edit()
 	long int size=sizeof(s);
 	if((f=fopen("add.txt","r+"))==NULL)
 		exit(0);
-	system("cls");
+	system("clear");
 	printf("Enter Room number of the customer to edit:\n\n");
 	scanf("%[^\n]",roomnumber);
 	fflush(stdin);
@@ -416,8 +411,6 @@ void edit()
 			scanf("%s",s.address);
 			printf("\nEnter Phone number :");
 			scanf("%s",s.phonenumber);
-			printf("\nEnter Nationality :");
-			scanf("%s",s.nationality);
 			printf("\nEnter Email :");
 			scanf("%s",s.email);
 			printf("\nEnter Period :");
@@ -445,7 +438,7 @@ void edit()
 
 void admin()
 {
-    printf("\n----\n-----Admin menu----\n1.Book a room \n2.Booking History \n3.Delete Booking \n4.Search a booking \n5.Edit a booking \n6.Main Menu\n");
+    printf("\n********************\n-----Admin menu----\n1.Book a room \n2.Booking History \n3.Delete Booking \n4.Search a booking \n5.Edit a booking \n6.Main Menu\n******************\n");
     printf("Enter your selection");
     int op;
     scanf("%d",&op);
@@ -458,14 +451,14 @@ void admin()
         case 5: edit();break;
         case 6: MainMenu();
         default : printf("Invalid Selection");
-                admin();
+            
     }
     admin();
 }
 void custmenu()
 {
-    printf("\n----\n----Booking Menu----\n1.Book a room \n2.Booking History \n3.Calendar \n4.Customer menu\n");
-    printf("enter your selection::");
+    printf("\n*****************\n----Booking Menu----\n1.Book a room \n2.Booking History \n3.Calendar \n4.Customer menu\n****************\n");
+    printf("Enter your option ::");
     int op;
     scanf("%d",&op);
     switch(op)
@@ -485,8 +478,11 @@ void MainMenu()
 	header();
 	delay(100);
 	system("clear");
+	printf("**********************************************************************\n");
 	printf("*********************\nWELCOME TO THE HOTEL\n*************************\n");
-	printf("1)Customer Log in\n2)Admin Log in\n3)Exit\nPlease pick an option :: ");
+	printf("1)Customer Log in\n2)Admin Log in\n3)Exit\n");
+	printf("**********************************************************************\n");
+	printf("**********************************************************************\nPlease pick an option :: ");
 	int option;
 	scanf("%d",&option);
 	switch(option)
@@ -494,7 +490,7 @@ void MainMenu()
 		case 1 : customer(); break;
 		case 2 : admin(); break;
 		case 3 : exit(0);
-		default : printf("ERROR. GO DIE\n\n");
+		default : printf("ERROR. You picked a wrong option. Redirecting you to Main Menu soon, please wait.\n\n"); delay(1000);
 	}
 	MainMenu();
 }
