@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 int i,j,k,a,b,u,v,n,ne=1;
 int min,mincost=0,cost[9][9],parent[9];
@@ -37,7 +38,7 @@ void krushkals()
 		v=find(v);
 		if(uni(u,v))
 		{
-   			printf("n%d edge (%d,%d) =%dn",ne,a,b,min);
+   			printf("%d edge (%d,%d) = %d\n",ne,a,b,min);
    			mincost +=min;
   		}
   		cost[a][b]=cost[b][a]=999;
@@ -48,6 +49,7 @@ void krushkals()
 
 int main()
 {
+	clock_t start,end;
 	printf("Implementation of Kruskal's algorithm \n");
 	printf("How many vertices does your graph have :: ");
 	scanf("%d",&n);
@@ -59,6 +61,11 @@ int main()
 			if(cost[i][j]==0)
     				cost[i][j]=999;
   		}
+	start=clock();
 	printf("\nThe edges of Minimum Cost Spanning Tree are : \n");
 	krushkals();
+	end=clock();
+	double time=((double)(end-start))/CLOCKS_PER_SEC;
+	printf("Time taken :: \nStart = %ld\nEnd = %ld\nTotal time taken = %f\n\n",start,end,time);
+	return 0;
 }
