@@ -32,8 +32,9 @@ int main()
 {
 	clock_t start,end;
 	int x;
-      	printf("enter x i.e, the no. of matrices + 1:");
+      	printf("Enter x i.e, the no. of matrices : ");
       	scanf("%d",&x);
+	x+=1;
       	int p[x];
       	printf("enter matrices size sequence:\n");
       	for(int i=0;i<x;i++)
