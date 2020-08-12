@@ -3,23 +3,25 @@
 2 - 'AddSal()' which adds $10 to the salary of the employee if it is less than $500.
 3 - 'AddWork()' which adds $5 to the salary of the employee if the number of hours of work per day is more than 6 hours.*/
 
+
+
 #include<iostream>
-using namepsace std;
+using namespace std;
 
 class Employee
 {
 	int Salary, HoursPerDay;
-	int AddSal(Salary), AddWork(Salary),Changes();	
+	int AddSal(int), AddWork(int),Changes();	
 	public: void getinfo();
 };
 
-void Employee::AddSalary(int salary)
+int Employee::AddSalary(int salary)
 {
 	salary+=10;
 	return salary;
 }
 
-void Employee::AddWork(int salary)
+int Employee::AddWork(int salary)
 {
 	salary+=5;
 	return salary;
