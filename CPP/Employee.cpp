@@ -7,6 +7,8 @@
 
 
 
+
+
 #include<iostream>
 using namespace std;
 
@@ -40,6 +42,7 @@ void Employee::Changes()
 
 void Employee::getinfo()
 {
+	cout<<"Enter Salary and Number of hours you wokr per day "<<endl;
 	cin>>Salary>>HoursPerDay;
 	cout<<"Entered Salary : "<<Salary<<" and Hours of wokr per day : "<<HoursPerDay<<" ."<<endl;
 	Changes();
