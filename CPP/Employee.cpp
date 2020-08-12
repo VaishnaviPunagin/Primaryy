@@ -5,34 +5,37 @@
 
 
 
+
+
 #include<iostream>
 using namespace std;
 
 class Employee
 {
 	int Salary, HoursPerDay;
-	int AddSal(int), AddWork(int),Changes();	
+	int AddSal(), AddWork();
+	void Changes();	
 	public: void getinfo();
 };
 
-int Employee::AddSalary(int salary)
+int Employee::AddSal()
 {
-	salary+=10;
-	return salary;
+	Salary+=10;
+	return Salary;
 }
 
-int Employee::AddWork(int salary)
+int Employee::AddWork()
 {
-	salary+=5;
-	return salary;
+	Salary+=5;
+	return Salary;
 }
 
 void Employee::Changes()
 {
 	if(Salary<=500)
-		Salary=AddSal(Salary);
+		Salary=AddSal();
 	if(HoursPerDay>=6)
-		Salary=AddWork(Salary);
+		Salary=AddWork();
 }
 
 void Employee::getinfo()
