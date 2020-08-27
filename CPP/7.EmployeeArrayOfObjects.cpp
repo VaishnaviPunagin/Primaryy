@@ -26,17 +26,19 @@ void employee::displayEmployeeDetails()
 
 int main()
 {
-  
-  cout<<"We shall now neter details for 3 employees!\n\n---------------\n";
-  employee people[3];
-  for(int i=0;i<3;i++)
+  int howMany;
+  cout<<"How many Employee details do you want to enter?\n";
+  cin>>howMany;
+  cout<<"We shall now neter details for "<<howMany<<" employees!\n\n---------------\n";
+  employee people[howMany];
+  for(int i=0;i<howMany;i++)
   {
     cout<<"For employee "<<i+1<<" --> \n";
     people[i].readEmployeeDetails();
     cout<<"---------------\n";
   }
   cout<<"\n\nYay we are done, let us see the data stored now.\n\n---------------\n";
-  for(int i=0;i<3;i++)
+  for(int i=0;i<howMany;i++)
   {
     cout<<"Employee "<<i+1<<" --> \n";
     people[i].displayEmployeeDetails();
