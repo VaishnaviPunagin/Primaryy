@@ -33,9 +33,10 @@ int student::count;
 
 int main()
 {
-  student a("Percy Jackson","Cabin3"),b("Annabeth Chase","Cabin6"),c("Katniss Everdeen","District 13"),d("Harry Potter","Gryffindor"),h("Four - Tobias Eaton");
+  student a("Percy Jackson","Cabin3"),b("Annabeth Chase","Cabin6"),c("Katniss Everdeen","District13"),d("Harry Potter","Gryffindor"),h("Four - Tobias Eaton");
   student Divergent, TheMortalInstruments, TheNightCircus;
   student who("WhoAreYou");
+  cout<<"All the data that has been entered :"<<endl<<"a-Percy Jackson,Cabin3     b-Annabeth Chase,Cabin6     c-Katniss Everdeen,District13     d-Harry Potter,Gryffindor     h-Four-Tobias Eaton      Divergent       TheMortalInstruments      TheNightCircus        who-WhoAreYou "<<endl<<endl;
   student::howMany();
   return 0;
 }
