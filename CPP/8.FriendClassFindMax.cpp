@@ -27,6 +27,6 @@ int main()
   cin>>one>>two;
   A compare(one,two);
   B maximum;
-  cout<<maximum::B(compare);
+  cout<<"The larger number is "<<maximum.max(compare)<<".\n";
   return 0;
 }
