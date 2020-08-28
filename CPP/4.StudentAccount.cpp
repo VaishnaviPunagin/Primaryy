@@ -10,7 +10,7 @@ public:
   }
   studentAccount(int more)
   {
-    amount+=more;
+    amount=more+1000;
   }
   void Balance()
   {
@@ -26,8 +26,8 @@ int main()
   cout<<"Now, we add some more money to it. Enter an amount please!"<<endl;
   int value;
   cin>>value;
-  Percy(value);
+  studentAccount NotPercy(value);
   cout<<"After adding said money"<<endl;
-  Percy.Balance();
+  NotPercy.Balance();
   return 0;
 }
