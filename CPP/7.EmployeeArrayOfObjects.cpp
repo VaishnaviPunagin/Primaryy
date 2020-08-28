@@ -15,7 +15,7 @@ void employee::readEmployeeDetails()
   cin>>name;
   cout<<"Enter EmpNumber ::  ";
   cin>>empNumber;
-  cout<<"Enter Salary (?) :: ";
+  cout<<"Enter Salary :: ";
   cin>>salary;
 }
 
