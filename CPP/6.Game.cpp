@@ -3,7 +3,7 @@ using namespace std;
 
 class Game{
   int score;
-  char winnerId;
+  string winnerId;
 public:
   void readGameDetails();
   void getFinalScore(Game, Game);
