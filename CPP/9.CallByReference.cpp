@@ -28,6 +28,6 @@ int main()
   first.display();
   cout<<"Second object : ";
   second.display();
-  cout<<"^^Change function calls the second object by reference and adds content of object first and 500 to the content of the second object!";
+  cout<<"^^Change function calls the second object by reference and adds content of object first and 500 to the content of the second object!\n";
   return 0;
 }
